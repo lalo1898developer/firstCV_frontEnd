@@ -8,20 +8,20 @@ const AuthContextProvider = (props) => {
   const [user, setUser] = useState(null);
 
   const loginUser = (token) => {
-    localStorage.setItem('err-app_token', token);
+    localStorage.setItem('firstcv-app_token', token);
     const decoded = decode(token);
     setUser(decoded);
     setIsAuth(true);
   }
 
   const logoutUser = () => {
-    localStorage.removeItem('err-app_token');
+    localStorage.removeItem('firstcv-app_token');
     setUser({});
     setIsAuth(false);
   }
 
   useEffect(() => {
-    const item = localStorage.getItem('err-app_token')
+    const item = localStorage.getItem('firstcv-app_token')
     if (item) {
       const decoded = decode(item);
       setUser(decoded);

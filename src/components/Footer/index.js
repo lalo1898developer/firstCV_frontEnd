@@ -4,7 +4,7 @@ import './index.css';
 const Footer = () => {
   return ( 
     <footer className="footer text-white bg-dark">
-        © 2020 Copyright ERR
+        MyFirstCV © 2020 Copyright
     </footer>
   );
 }
