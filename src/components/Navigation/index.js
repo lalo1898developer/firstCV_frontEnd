@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import {AuthContext} from '../../contexts/AuthContext'
 import { Link } from 'react-router-dom';
+import { AccountBox } from '@material-ui/icons';
 import {
  Collapse,
  Navbar,
@@ -9,22 +10,25 @@ import {
  Nav,
  NavItem,
  NavLink,
+ Dropdown, 
+ DropdownToggle, 
+ DropdownMenu, 
+ DropdownItem
 } from 'reactstrap';
 
 const Navigation = () => {
  const [isOpen, setIsOpen] = useState(false);
  const { isAuth, user } = useContext(AuthContext);
+ const [dropdownOpen, setDropdownOpen] = useState(false);
   
  const toggle = () => setIsOpen(!isOpen);
+ const toggleDropDown = () => setDropdownOpen(prevState => !prevState);
 
  const publicNavbar = () => {
-  console.log(user);
-
    return (<Navbar
      className="navbar navbar-dark bg-dark"
-     // style={{ backgroundColor: "black", color: "red" }}
      expand="md">
-     <NavbarBrand tag={Link} to="/">Eduardo's App</NavbarBrand>
+     <NavbarBrand tag={Link} to="/">MyFirstCV App</NavbarBrand>
      <NavbarToggler onClick={toggle} />
      <Collapse isOpen={isOpen} navbar>
        <Nav className="mr-auto" navbar>
@@ -40,18 +44,27 @@ const Navigation = () => {
  }
 
  const authNavbar = () => {
-  console.log(user);
-
   return (<Navbar
     className="navbar navbar-dark bg-dark"
     // style={{ backgroundColor: "black", color: "red" }}
     expand="md">
-    <NavbarBrand tag={Link} to="/">{`Bienvenid@ ${user.firstName}!`}</NavbarBrand>
+    <NavbarBrand tag={Link} to="/">MyFirstCV App</NavbarBrand>
     <NavbarToggler onClick={toggle} />
     <Collapse isOpen={isOpen} navbar>
-      <Nav className="mr-auto" navbar>
+      <Nav className="ml-auto" navbar>
         <NavItem>
-          <NavLink tag={Link} to="/logout">Logout</NavLink>
+           <NavLink tag={Link} to="/user/home">Home</NavLink>
+         </NavItem>
+        <NavItem>
+        <Dropdown isOpen={dropdownOpen} toggle={toggleDropDown}>
+            <DropdownToggle caret>
+                <AccountBox className="float-left"/>
+                {user.firstName}
+            </DropdownToggle>
+            <DropdownMenu right>
+              <DropdownItem tag={Link} to="/logout">Logout</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         </NavItem>
       </Nav>
     </Collapse>

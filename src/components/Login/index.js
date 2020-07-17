@@ -1,5 +1,6 @@
 import React, {useState, useContext} from 'react';
 import {AuthContext} from '../../contexts/AuthContext'
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import {
   Button,  
@@ -13,6 +14,8 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const {loginUser} = useContext(AuthContext);
+  const [isLogin, setIsLogin] = useState(false);
+
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -21,16 +24,16 @@ const Login = () => {
 
     try {
       const res = await axios.post(LOGIN_URI, jsonSend);
-      console.log(res);
       loginUser(res.data.token);
+      setIsLogin(true);
       alert('Successful login');
     } catch (error) {
       alert('Error on login');
     }
   }
 
-  return (
-    <React.Fragment>
+  const loginFalse = () => {
+    return (<React.Fragment>
       <h1 className="mb-4">Login to Eduardo's App</h1>
       <Form onSubmit={handleForm}>
         <FormGroup>
@@ -55,8 +58,18 @@ const Login = () => {
         </FormGroup>
         <Button>Submit</Button>
       </Form>
-    </React.Fragment>
-  );
+    </React.Fragment>)
+  }
+
+  const loginTrue = () => {
+    return (<Redirect to="/user/home" />)
+  }
+
+return (
+  <React.Fragment>
+    { isLogin ? loginTrue() : loginFalse() }
+  </React.Fragment>
+);
 }
  
 export default Login;

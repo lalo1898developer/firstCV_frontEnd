@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 import {
   Button,  
   Form,  
@@ -13,6 +14,7 @@ const Signup = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isSignup, setIsSignup] = useState(false);
 
   const handleForm = async (e) => {
     e.preventDefault();            
@@ -29,6 +31,7 @@ const Signup = () => {
       setLastName('');
       setEmail('');
       setPassword('');
+      setIsSignup(true);
       alert('Successfull signup!');
     } catch (error) {
       alert('Error on signup!');
@@ -36,8 +39,8 @@ const Signup = () => {
 
   }
 
-  return (
-    <React.Fragment>
+  const signupFalse = () => {
+    return (<React.Fragment>
       <h1 className="mb-4">Signup on Eduardo's App</h1>
       <Form onSubmit={handleForm}>
         <FormGroup>
@@ -82,6 +85,16 @@ const Signup = () => {
         </FormGroup>
         <Button type="submit">Submit</Button>
       </Form>
+    </React.Fragment>)
+  }
+
+  const signupTrue = () => {
+    return (<Redirect to="/login" />)
+  }
+
+  return (
+    <React.Fragment>
+      { isSignup ? signupTrue() : signupFalse() }
     </React.Fragment>
   );
 }
