@@ -26,27 +26,76 @@ const [workDescription, setWorkDescription] = useState('');
 
 const [academicState, setAcademicState] = useState(0);
 
-const handleForm = async (e) => {
-    e.preventDefault();
+// Handle
+const handlePhone = (event)=>{
+    setPhone(event.target.value)
+}
+const handlePostalCode = (event)=>{
+    setPostalCode(event.target.value)
+}
+const handleCountry = (event)=>{
+    setCountry(event.target.value)
+}
+const handleCity = (event)=>{
+    setCity(event.target.value)
+}
+const handleState = (event)=>{
+    setState(event.target.value)
+}
+const handleProfile = (event)=>{
+    setProfile(event.target.value)
+}
+
+const handleSchoolName = (event)=>{
+    setSchoolName(event.target.value)
+}
+const handleEntryYear = (event)=>{
+    setEntryYear(event.target.value)
+}
+const handleEndYear = (event)=>{
+    setEndYear(event.target.value)
+}
+const handleBachelorName = (event)=>{
+    setBachelorName(event.target.value)
+}
+
+const handleWorkName = (event)=>{
+    setWorkName(event.target.value)
+}
+const handleWorkEntryYear = (event)=>{
+    setWorkEntryYear(event.target.value)
+}
+const handleWorkEndYear = (event)=>{
+    setWorkEndYear(event.target.value)
+}
+const handlePosition = (event)=>{
+    setPosition(event.target.value)
+}
+const handleWorkDescription = (event)=>{
+    setWorkDescription(event.target.value)
+}
+
+const createCV = () => {
     const academicData = {
         schoolName, entryYear, endYear, bachelorName
     }
     const workData = {
         workName, workEntryYear, workEndYear, position
     }
-    const jsonSend = {
+    const body = {
         phone, postalCode, country, city, state, profile, academicData, workData, workDescription
-    }       
-    console.log(jsonSend);  
-    //const POST_URI = `${process.env.REACT_APP_BACKEND_BASE_URL}/signup`
-  }
+    }
+    console.log(body);
+}
+
+
 
     return(
         <>
-        <Form onSubmit={handleForm}>
         <Row className="py-3">
             <Col sm="12" md="8" className="mx-auto bg-secondary rounded">
                 <h2>Datos Personales:</h2>
+                <Form>
                     <Row form>
                         <Col md={6}>
                         <FormGroup>
@@ -55,7 +104,7 @@ const handleForm = async (e) => {
                             name="phone"
                             id="phone"
                             value={phone}
-                            onChange={(e) => {setPhone(e.target.value)}}
+                            onChange={handlePhone}
                             placeholder="Telefono" />
                         </FormGroup>
                         </Col>
@@ -66,7 +115,7 @@ const handleForm = async (e) => {
                             name="postalCode"
                             id="postalCode"
                             value={postalCode}
-                            onChange={(e) => {setPostalCode(e.target.value)}}
+                            onChange={handlePostalCode}
                             placeholder="Código Postal" />
                         </FormGroup>
                         </Col>
@@ -79,7 +128,7 @@ const handleForm = async (e) => {
                             type="text"
                             name="country"
                             value={country}
-                            onChange={(e) => {setCountry(e.target.value)}}
+                            onChange={handleCountry}
                             id="country"/>
                         </FormGroup>
                     </Col>
@@ -91,7 +140,7 @@ const handleForm = async (e) => {
                             type="text"
                             name="city"
                             value={city}
-                            onChange={(e) => {setCity(e.target.value)}}
+                            onChange={handleCity}
                             id="city"/>
                         </FormGroup>
                         </Col>
@@ -103,17 +152,20 @@ const handleForm = async (e) => {
                             type="text"
                             name="state"
                             value={state}
-                            onChange={(e) => {setState(e.target.value)}}
+                            onChange={handleState}
                             id="state"/>
                         </FormGroup>  
                         </Col>
                     </Row>
+                </Form>
             </Col>
         </Row>
 
         <Row className="py-3">
             <Col sm="12" md="8" className="mx-auto bg-secondary rounded">
                 <h2>Biografia:</h2>
+                <Form>
+                    
                     <Row form>
                         <Col md={12}>
                             <FormGroup>
@@ -121,17 +173,19 @@ const handleForm = async (e) => {
                                 type="textarea"
                                 name="profile"
                                 value={profile}
-                                onChange={(e) => {setProfile(e.target.value)}}
+                                onChange={handleProfile}
                                 id="profile" />
                             </FormGroup>
                         </Col>
                     </Row>
+                </Form>
             </Col>
         </Row>
 
         <Row className="py-3">
             <Col sm="12" md="8" className="mx-auto bg-secondary rounded">
                 <h2>Formación académica:</h2>
+                <Form>
                     <Row form>
                         <Col md={4}>
                             <FormGroup>
@@ -140,7 +194,7 @@ const handleForm = async (e) => {
                                 type="text"
                                 name="schoolName"
                                 value={schoolName}
-                                onChange={(e) => {setSchoolName(e.target.value)}}
+                                onChange={handleSchoolName}
                                 id="schoolName"/>
                             </FormGroup>
                         </Col>
@@ -152,7 +206,7 @@ const handleForm = async (e) => {
                                 type="text"
                                 name="entryYear"
                                 value={entryYear}
-                                onChange={(e) => {setEntryYear(e.target.value)}}
+                                onChange={handleEntryYear}
                                 id="entryYear"/>
                             </FormGroup>
                         </Col>
@@ -164,7 +218,7 @@ const handleForm = async (e) => {
                                 type="text"
                                 name="endYear"
                                 value={endYear}
-                                onChange={(e) => {setEndYear(e.target.value)}}
+                                onChange={handleEndYear}
                                 id="endYear"/>
                             </FormGroup>  
                         </Col>
@@ -175,7 +229,7 @@ const handleForm = async (e) => {
                                 type="text"
                                 name="bachelorName"
                                 value={bachelorName}
-                                onChange={(e) => {setBachelorName(e.target.value)}}
+                                onChange={handleBachelorName}
                                 id="bachelorName"/>
                             </FormGroup>  
                         </Col>
@@ -190,12 +244,14 @@ const handleForm = async (e) => {
                             +
                         </button>
                     </div>
+                </Form>
             </Col>
         </Row>
 
     <Row className="py-3">
         <Col sm="12" md="8" className="mx-auto bg-secondary rounded">
                 <h2>Experiencia laboral:</h2>
+            <Form>
                 <Row form>
                     <Col md={4}>
                         <FormGroup>
@@ -204,7 +260,7 @@ const handleForm = async (e) => {
                             type="text"
                             name="workName"
                             value={workName}
-                            onChange={(e) => {setWorkName(e.target.value)}}
+                            onChange={handleWorkName}
                             id="workName"/>
                         </FormGroup>
                     </Col>
@@ -216,7 +272,7 @@ const handleForm = async (e) => {
                             type="text"
                             name="entryYear"
                             value={workEntryYear}
-                            onChange={(e) => {setWorkEntryYear(e.target.value)}}
+                            onChange={handleWorkEntryYear}
                             id="entryYear"/>
                         </FormGroup>
                     </Col>
@@ -228,7 +284,7 @@ const handleForm = async (e) => {
                             type="text"
                             name="endYear"
                             value={workEndYear}
-                            onChange={(e) => {setWorkEndYear(e.target.value)}}
+                            onChange={handleWorkEndYear}
                             id="endYear"/>
                         </FormGroup>  
                     </Col>
@@ -239,7 +295,7 @@ const handleForm = async (e) => {
                             type="text"
                             name="position"
                             value={position}
-                            onChange={(e) => {setPosition(e.target.value)}}
+                            onChange={handlePosition}
                             id="position"/>
                         </FormGroup>  
                     </Col>
@@ -252,36 +308,39 @@ const handleForm = async (e) => {
                             name="workDescription"
                             id="workDescription"
                             value={workDescription}
-                            onChange={(e) => {setWorkDescription(e.target.value)}}
+                            onChange={handleWorkDescription}
                             placeholder="Breve posición de actividades"/>
                         </FormGroup>
                     </Col>
-                </Row>
+                </Row>    
+            </Form>
         </Col>
     </Row>
 
-        <Row className="py-3">
+    <Row className="py-3">
             <Col sm="12" md="8" className="mx-auto bg-secondary rounded">
                 <h2>Habilidades:</h2>
-                <Row form>
-                    <Col md={12}>
-                        <FormGroup>
-                            <Label for="knowledge">Habilidades</Label>
-                            <Input type="tel" name="knowledge" id="knowledge" placeholder="" />
-                        </FormGroup>
-                    </Col>
-                </Row>
-            </Col>
-        </Row>
+                <Form>
+                    
+                    <Row form>
+                        <Col md={12}>
+                            <FormGroup>
+                                <Label for="knowledge">Habilidades</Label>
+                                <Input type="tel" name="knowledge" id="knowledge" placeholder="" />
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                </Form>
+        </Col>
+    </Row>
 
-        <Row className="py-3">
-            <Col sm="12" md="8" className="mx-auto rounded">
-                <button type="submit" className="btn btn-primary ml-2"> Crear Curriculum</button>
-            </Col>
-        </Row>
-    </Form>
+    <Row className="py-3">
+        <Col sm="12" md="8" className="mx-auto rounded">
+            <button type="button" className="btn btn-primary ml-2" onClick={()=>{createCV()}}> Crear Curriculum</button>
+        </Col>
+    </Row>
             
-    </>
+        </>
     )
 }
 
