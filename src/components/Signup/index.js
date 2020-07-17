@@ -41,7 +41,7 @@ const Signup = () => {
 
   const signupFalse = () => {
     return (<React.Fragment>
-      <h1 className="mb-4">Signup on Eduardo's App</h1>
+      <h1 className="mb-4">Signup on MyFirstCV App</h1>
       <Form onSubmit={handleForm}>
         <FormGroup>
           <Label>First Name</Label>

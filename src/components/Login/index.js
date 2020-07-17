@@ -34,7 +34,7 @@ const Login = () => {
 
   const loginFalse = () => {
     return (<React.Fragment>
-      <h1 className="mb-4">Login to Eduardo's App</h1>
+      <h1 className="mb-4">Login to MyFirstCV App</h1>
       <Form onSubmit={handleForm}>
         <FormGroup>
           <Label>Email</Label>
