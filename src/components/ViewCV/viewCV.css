@@ -1,0 +1,10 @@
+.coverPhoto {
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 150px;
+    margin: 0 auto;
+}
+.academica.row {
+    background: #f1eded;
+}
