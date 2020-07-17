@@ -1,11 +1,11 @@
-import React from 'react';
-import NewForm from './components/NewForm/NewForm';
+import React, { Fragment } from 'react';
+import NewForm from './components/NewForm/';
 
 function App() {
   return (
-    <>
+    <Fragment>
       <NewForm/>
-    </>
+    </Fragment>
   );
 }
 
