@@ -1,9 +1,15 @@
-import React,{ useState, useEffect } from 'react';
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, { useEffect, useContext, useState} from 'react';
 import { Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import DivAcademic from './DivAcademic'
+import { Link, Redirect } from 'react-router-dom';
+import {AuthContext} from '../../contexts/AuthContext'
+import axios from 'axios';
 
 
 const NewForm = () => {
+const { isAuth, user } = useContext(AuthContext);
+
 // UseState Form
 const [phone, setPhone] = useState('');
 const [postalCode, setPostalCode] = useState('');
@@ -24,9 +30,12 @@ const [position, setPosition] = useState('');
 
 const [workDescription, setWorkDescription] = useState('');
 
+const [knowledge, setKnowledge] = useState('CSS');
+
 const [academicState, setAcademicState] = useState(0);
 
 const handleForm = async (e) => {
+
     e.preventDefault();
     const academicData = {
         schoolName, entryYear, endYear, bachelorName
@@ -35,10 +44,17 @@ const handleForm = async (e) => {
         workName, workEntryYear, workEndYear, position
     }
     const jsonSend = {
-        phone, postalCode, country, city, state, profile, academicData, workData, workDescription
+        phone, postalCode, country, city, state, profile, academicData, workData, workDescription, knowledge
     }       
     console.log(jsonSend);  
-    //const POST_URI = `${process.env.REACT_APP_BACKEND_BASE_URL}/signup`
+    const POST_URI = `${process.env.REACT_APP_BACKEND_BASE_URL}/users/${user.id}/curriculums`
+
+    try {
+      await axios.post(POST_URI, jsonSend);
+      alert('Successfull Create CV!');
+    } catch (error) {
+      alert('Error on Create CV!');
+    }
   }
 
     return(
