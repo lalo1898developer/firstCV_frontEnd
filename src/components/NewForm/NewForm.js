@@ -72,7 +72,11 @@ const handleWorkDescription = (event)=>{
 }
 
 
+const createCV = () => {
+    const body = {
 
+    }
+}
 
 
 
@@ -180,7 +184,7 @@ const handleWorkDescription = (event)=>{
                             type="text"
                             name="schoolName"
                             value={schoolName}
-                            onChange={setSchoolName}
+                            onChange={handleSchoolName}
                             id="schoolName"/>
                         </FormGroup>
                     </Col>
@@ -192,7 +196,7 @@ const handleWorkDescription = (event)=>{
                             type="text"
                             name="entryYear"
                             value={entryYear}
-                            onChange={setEntryYear}
+                            onChange={handleEntryYear}
                             id="entryYear"/>
                         </FormGroup>
                     </Col>
@@ -204,7 +208,7 @@ const handleWorkDescription = (event)=>{
                             type="text"
                             name="endYear"
                             value={endYear}
-                            onChange={setEndYear}
+                            onChange={handleEndYear}
                             id="endYear"/>
                         </FormGroup>  
                     </Col>
@@ -215,7 +219,7 @@ const handleWorkDescription = (event)=>{
                             type="text"
                             name="bachelorName"
                             value={bachelorName}
-                            onChange={setBachelorName}
+                            onChange={handleBachelorName}
                             id="bachelorName"/>
                         </FormGroup>  
                     </Col>
@@ -236,7 +240,7 @@ const handleWorkDescription = (event)=>{
                             type="text"
                             name="workName"
                             value={workName}
-                            onChange={setWorkName}
+                            onChange={handleWorkName}
                             id="workName"/>
                         </FormGroup>
                     </Col>
@@ -247,8 +251,8 @@ const handleWorkDescription = (event)=>{
                             <Input
                             type="text"
                             name="entryYear"
-                            value={entryYear}
-                            onChange={setEntryYear}
+                            value={workEntryYear}
+                            onChange={handleWorkEntryYear}
                             id="entryYear"/>
                         </FormGroup>
                     </Col>
@@ -259,8 +263,8 @@ const handleWorkDescription = (event)=>{
                             <Input
                             type="text"
                             name="endYear"
-                            value={endYear}
-                            onChange={setEndYear}
+                            value={workEndYear}
+                            onChange={handleWorkEndYear}
                             id="endYear"/>
                         </FormGroup>  
                     </Col>
@@ -271,7 +275,7 @@ const handleWorkDescription = (event)=>{
                             type="text"
                             name="position"
                             value={position}
-                            onChange={setPosition}
+                            onChange={handlePosition}
                             id="position"/>
                         </FormGroup>  
                     </Col>
@@ -284,7 +288,7 @@ const handleWorkDescription = (event)=>{
                             name="workDescription"
                             id="workDescription"
                             value={workDescription}
-                            onChange={setWorkDescription}
+                            onChange={handleWorkDescription}
                             placeholder="Breve posición de actividades"/>
                         </FormGroup>
                     </Col>
@@ -307,8 +311,14 @@ const handleWorkDescription = (event)=>{
                         </Col>
                     </Row>
                 </Form>
-            </Col>
-        </Row>
+        </Col>
+    </Row>
+
+    <Row className="py-3">
+        <Col sm="12" md="8" className="mx-auto rounded">
+            <button type="button" className="btn btn-primary ml-2" onClick={()=>{createCV()}}> Crear Curriculum</button>
+        </Col>
+    </Row>
             
         </>
     )
