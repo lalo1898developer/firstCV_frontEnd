@@ -16,6 +16,7 @@ const HomeUser = () => {
 
   if(!isAuth) return <Redirect to="/login"/>
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function getCV(){
     const READALL_CURRICULUMS_URI = `${process.env.REACT_APP_BACKEND_BASE_URL}/users/${user.id}/curriculums`;
 
@@ -33,8 +34,11 @@ const HomeUser = () => {
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect( async () => {
-    getCV();
+  useEffect(() => {
+    async function fetchData() {
+      await getCV();
+    }
+    fetchData();
   }, []);
 
   async function handleClick(id, e) {
