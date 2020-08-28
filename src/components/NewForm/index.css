@@ -1,0 +1,38 @@
+.seccionForm{
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.seccionSubForm{
+    padding: 1rem;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+    border-radius: 0.5rem;
+}
+
+.no-button{
+    border-radius: 1rem;
+    background: none !important;
+    border: none !important;
+    outline: inherit !important;
+    padding: 0 !important;
+}
+
+.no-button:hover{
+    background-color: #6c757da1 !important;
+}
+
+.no-button:focus {
+    outline: none !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.no-button:active {
+    background-color: #8d949b !important;
+}
+
+.btn-submit{
+    margin-bottom: 5rem;
+}
