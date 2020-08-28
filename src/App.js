@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 
 // Contexts
 import AuthContextProvider from './contexts/AuthContext';
+import FormContextProvider from './contexts/FormContext';
 
 // Misc
 import { BrowserRouter as Router, Switch } from "react-router-dom";
@@ -19,11 +20,13 @@ function App() {
       <Router>
         <AuthContextProvider>
             <Navigation />
-            <Container className="mt-4">
-              <Switch>
-                { Routes }
-              </Switch>
-            </Container>
+              <Container className="mt-4">
+                <FormContextProvider>
+                  <Switch>
+                    { Routes }
+                  </Switch>
+                </FormContextProvider>
+              </Container>
             <Footer />
         </AuthContextProvider>
       </Router>
