@@ -59,23 +59,24 @@ const HomeUser = () => {
   }
 
   const curriculumTrue = () => {
-    return (<React.Fragment>
+    return (
+    <React.Fragment>
       <Row>
       {curriculums.map((curriculum) =>  {
-      return(
-        <React.Fragment>
-          <Col sm="3">
-            <Card body className="text-center text-white bg-secondary">
-              <CardTitle>{curriculum.title}</CardTitle>
-              <ButtonGroup>
-                <Button color="warning" tag={Link} to="/user/editform">Edit</Button>
-                <Button color="danger" onClick={(e) => handleClick(curriculum._id, e)}>Delete</Button>
-              </ButtonGroup>
-            </Card>
-          </Col>
-        </React.Fragment>
-      )
-  })}
+        return(
+          <React.Fragment>
+            <Col sm="3">
+              <Card body className="text-center text-white bg-secondary">
+                <CardTitle>{curriculum.title}</CardTitle>
+                <ButtonGroup>
+                  <Button color="warning" tag={Link} to="/user/editform">Edit</Button>
+                  <Button color="danger" onClick={(e) => handleClick(curriculum._id, e)}>Delete</Button>
+                </ButtonGroup>
+              </Card>
+            </Col>
+          </React.Fragment>
+        )
+      })}
 
         <Col sm="3" className="text-center align-self-center">
           <Button tag={Link} to="/user/newform" color="link"><AddBox color="secondary" style={{ fontSize: 70 }} /></Button>
@@ -84,19 +85,20 @@ const HomeUser = () => {
 
 
       <Modal isOpen={modal} toggle={toggle}>
-            <ModalHeader toggle={toggle}>Atention</ModalHeader>
-              <ModalBody>
-                Successful delete curriculum
-              </ModalBody>
-            <ModalFooter>
-              <Button color="secondary" onClick={toggle}>Aceptar</Button>
-            </ModalFooter>
-          </Modal>
+        <ModalHeader toggle={toggle}>Atention</ModalHeader>
+          <ModalBody>
+            Successful delete curriculum
+          </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={toggle}>Aceptar</Button>
+        </ModalFooter>
+      </Modal>
     </React.Fragment>)
   }
 
   const curriculumFalse = () => {
-    return (<React.Fragment>
+    return (
+    <React.Fragment>
         <div className="text-center align-self-center centrado" >
             <h2>Aún no tienes ningun CV registrado, selecciona el siguiente botón para crear uno</h2>
             <Button tag={Link} to="/user/newform" color="link"><AddBox color="secondary" style={{ fontSize: 90 }} /></Button>
